@@ -54,6 +54,12 @@ Create a MySQL database:
 CREATE DATABASE studysync_ai;
 ```
 
+Or import the complete schema and demo data:
+
+```bash
+mysql -u root -p < database.sql
+```
+
 Update `backend/src/main/resources/application.properties` with your MySQL username and password.
 
 Hibernate uses `spring.jpa.hibernate.ddl-auto=update`, so the tables are created automatically when the backend starts.
