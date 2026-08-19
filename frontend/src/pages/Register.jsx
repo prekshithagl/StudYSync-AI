@@ -24,7 +24,7 @@ export default function Register() {
       notify('Account created successfully');
       navigate('/dashboard');
     } catch (error) {
-      notify(error.response?.data?.message || 'Registration failed', 'error');
+      notify(error.response?.data?.message || 'Cannot connect to backend on port 8090', 'error');
     } finally {
       setLoading(false);
     }

@@ -44,10 +44,12 @@ public class DashboardService {
 
         double totalStudyHours = plans.stream().filter(p -> p.getStatus() == PlanStatus.COMPLETED).mapToDouble(StudyPlan::getDurationHours).sum();
         long pendingStudyPlans = plans.stream().filter(p -> p.getStatus() == PlanStatus.PENDING).count();
+        long completedStudyPlans = plans.stream().filter(p -> p.getStatus() == PlanStatus.COMPLETED).count();
         long pendingTasks = tasks.stream().filter(t -> t.getStatus() == TaskStatus.PENDING).count() + pendingStudyPlans;
-        long completedTasks = tasks.stream().filter(t -> t.getStatus() == TaskStatus.COMPLETED).count();
+        long completedTasks = tasks.stream().filter(t -> t.getStatus() == TaskStatus.COMPLETED).count() + completedStudyPlans;
+        long totalWorkItems = tasks.size() + plans.size();
         double attendancePercentage = attendance.stream().mapToDouble(Attendance::getPercentage).average().orElse(0);
-        double completionRate = tasks.isEmpty() ? 0 : (completedTasks * 100.0 / tasks.size());
+        double completionRate = totalWorkItems == 0 ? 0 : (completedTasks * 100.0 / totalWorkItems);
         double productivityScore = round((completionRate * 0.45) + (attendancePercentage * 0.25) + (Math.min(totalStudyHours, 40) / 40 * 30));
 
         return new DashboardResponse(

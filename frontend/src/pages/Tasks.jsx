@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PageHeader from '../components/PageHeader.jsx';
 import api from '../services/api.js';
 import { useToast } from '../context/ToastContext.jsx';
@@ -10,12 +11,17 @@ export default function Tasks() {
   const [form, setForm] = useState(blank);
   const [editing, setEditing] = useState(null);
   const [search, setSearch] = useState('');
+  const location = useLocation();
   const { notify } = useToast();
 
   const load = async (page = 0) => {
     const { data } = await api.get('/tasks', { params: { search, page, size: 6 } });
     setTasks(data);
   };
+
+  useEffect(() => {
+    if (location.state?.search) setSearch(location.state.search);
+  }, [location.state]);
 
   useEffect(() => { load(0); }, [search]);
 
