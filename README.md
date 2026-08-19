@@ -194,17 +194,25 @@ PUT /api/profile
 
 📸 Screenshots
 
-Screenshots of the application will be added here.
+## 📸 Screenshots
 
-Recommended screenshots:
+### Login
+![Login](screenshots/login.png)
 
-- Dashboard
-- Login/Register
-- Study Planner
-- Task Manager
-- Attendance Tracker
-- Performance Analytics
-- Pomodoro Timer
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Attendance
+![Attendance](screenshots/attendance.png)
+
+### Performance
+![Performance](screenshots/performance.png)
+
+### Study Planner
+![Study Planner](screenshots/study-planner.png)
+
+### Tasks
+![Tasks](screenshots/tasks.png)
 
 🎯 Project Highlights
 
