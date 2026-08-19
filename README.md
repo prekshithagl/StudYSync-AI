@@ -192,27 +192,25 @@ GET /api/dashboard
 GET /api/profile
 PUT /api/profile
 
-📸 Screenshots
-
 ## 📸 Screenshots
 
 ### Login
-![Login](screenshots/login.png)
+![Login](screenshots/login.jpeg)
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.jpeg)
 
 ### Attendance
-![Attendance](screenshots/attendance.png)
+![Attendance](screenshots/attendance.jpeg)
 
 ### Performance
-![Performance](screenshots/performance.png)
+![Performance](screenshots/performance.jpeg)
 
 ### Study Planner
-![Study Planner](screenshots/study-planner.png)
+![Study Planner](screenshots/study-planner.jpeg)
 
 ### Tasks
-![Tasks](screenshots/tasks.png)
+![Tasks](screenshots/tasks.jpeg)
 
 🎯 Project Highlights
 
