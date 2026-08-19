@@ -1,154 +1,246 @@
-# StudySync AI - Smart Study Planner & Productivity Tracker
+StudySync AI – Smart Study Planner & Productivity Tracker
 
-StudySync AI is a Java full stack productivity platform for students. It includes JWT authentication, a study planner, task management, attendance tracking, Pomodoro focus sessions, subject performance analytics, and a modern responsive React dashboard.
+StudySync AI is a full-stack study management and productivity platform designed to help students plan their studies, manage tasks, track attendance, monitor academic performance, and improve focus through Pomodoro sessions.
 
-## Features
+The application is built with Spring Boot, React, and MySQL, with secure JWT-based authentication and a responsive dashboard for tracking academic productivity.
 
-- User registration, login, logout, BCrypt password hashing, and JWT session persistence
-- Protected Spring Boot REST APIs with user-owned data access
-- Dashboard cards for study hours, pending tasks, completed tasks, attendance, and productivity score
-- Chart.js analytics for weekly study hours, task split, attendance, and performance
-- Study planner with date filtering, today's schedule, edit, delete, and completion status
-- Task manager with search, priority, pagination, status updates, edit, and delete
-- Attendance tracker with subject-wise and overall percentage plus below-75 percent warnings
-- Subject performance tracker with marks, exam type, average marks, and charts
-- Frontend-only Pomodoro timer with focus session count and daily focus time
-- Profile update page
+✨ Key Features
 
-## Tech Stack
+- 🔐 User registration and login with JWT authentication
+- 🔒 BCrypt password hashing and protected REST APIs
+- 📊 Personalized productivity dashboard
+- 📅 Study planner with date-based filtering and completion tracking
+- ✅ Task management with search, priority, pagination, status, edit, and delete
+- 📚 Subject-wise attendance tracking with percentage calculations
+- ⚠️ Attendance warnings for subjects below 75%
+- 📈 Subject performance tracking with marks and analytics
+- 📊 Charts for study hours, tasks, attendance, and academic performance
+- 🍅 Pomodoro focus timer with focus session tracking
+- 👤 User profile management
+- 📱 Responsive React-based user interface
+- 🔑 User-specific data access and protected endpoints
 
-Backend: Java 17, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, Maven  
-Frontend: React, React Router DOM, Axios, Chart.js, Bootstrap Icons, Vite  
-Database: MySQL
+🛠️ Tech Stack
 
-## Project Structure
+Backend
 
-```text
+- Java 17
+- Spring Boot
+- Spring Security
+- JWT
+- Spring Data JPA
+- Hibernate
+- Maven
+
+Frontend
+
+- React
+- React Router DOM
+- Axios
+- Chart.js
+- Bootstrap Icons
+- Vite
+
+Database
+
+- MySQL
+
+🏗️ Project Architecture
+
 StudySync-AI/
-  backend/
-    src/main/java/com/studysyncai/
-      config/
-      controller/
-      dto/
-      entity/
-      exception/
-      repository/
-      security/
-      service/
-  frontend/
-    src/
-      components/
-      context/
-      layouts/
-      pages/
-      routes/
-      services/
-      utils/
-```
+│
+├── backend/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/studysyncai/
+│   │       │   ├── config/
+│   │       │   ├── controller/
+│   │       │   ├── dto/
+│   │       │   ├── entity/
+│   │       │   ├── exception/
+│   │       │   ├── repository/
+│   │       │   ├── security/
+│   │       │   └── service/
+│   │       └── resources/
+│   └── pom.xml
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── utils/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── database.sql
+├── .gitignore
+└── README.md
 
-## Database Setup
+🗄️ Database Setup
 
-Create a MySQL database:
+Create the MySQL database:
 
-```sql
 CREATE DATABASE studysync_ai;
-```
 
-Or import the complete schema and demo data:
+Alternatively, import the provided SQL file:
 
-```bash
 mysql -u root -p < database.sql
-```
 
-Update `backend/src/main/resources/application.properties` with your MySQL username and password.
+Then configure your MySQL credentials in:
 
-Hibernate uses `spring.jpa.hibernate.ddl-auto=update`, so the tables are created automatically when the backend starts.
+backend/src/main/resources/application.properties
 
-## Backend Setup
+The application uses Hibernate's:
 
-```bash
-cd StudySync-AI/backend
+spring.jpa.hibernate.ddl-auto=update
 
-```
+so the required tables can be created or updated automatically when the backend starts.
 
-Backend runs at:
+⚙️ Backend Setup
 
-```text
+Navigate to the backend:
+
+cd backend
+
+Install/build the project:
+
+mvn clean install
+
+Start the Spring Boot application:
+
+mvn spring-boot:run
+
+The backend API runs at:
+
 http://localhost:8090
-```
 
-## Frontend Setup
+💻 Frontend Setup
 
-```bash
-cd StudySync-AI/frontend
+Open another terminal and navigate to the frontend:
+
+cd frontend
+
+Install dependencies:
+
 npm install
+
+Create/configure the environment file:
+
+.env
+
+Add:
+
+VITE_API_URL=http://localhost:8090/api
+
+Start the React development server:
+
 npm run dev
-```
 
-Frontend runs at:
+The frontend runs at:
 
-```text
 http://localhost:5173
-```
 
-## API Details
+🔑 Authentication
 
-Authentication:
+The application uses JWT-based authentication.
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
+After successful login, the client uses the JWT token when accessing protected APIs.
 
-Study Plans:
+Protected requests use:
 
-- `GET /api/study-plans`
-- `GET /api/study-plans?date=2026-05-01`
-- `POST /api/study-plans`
-- `PUT /api/study-plans/{id}`
-- `DELETE /api/study-plans/{id}`
-
-Tasks:
-
-- `GET /api/tasks?search=&page=0&size=8`
-- `POST /api/tasks`
-- `PUT /api/tasks/{id}`
-- `DELETE /api/tasks/{id}`
-
-Attendance:
-
-- `GET /api/attendance`
-- `POST /api/attendance`
-
-Performance:
-
-- `GET /api/performance`
-- `POST /api/performance`
-
-Dashboard and Profile:
-
-- `GET /api/dashboard`
-- `GET /api/profile`
-- `PUT /api/profile`
-
-Protected endpoints require:
-
-```text
 Authorization: Bearer <jwt-token>
-```
 
-## Screenshots
+🔗 API Overview
 
-Add screenshots here after running the application:
+Authentication
 
-- Home page
-- Login/Register
+POST /api/auth/register
+POST /api/auth/login
+
+Study Plans
+
+GET    /api/study-plans
+GET    /api/study-plans?date=2026-05-01
+POST   /api/study-plans
+PUT    /api/study-plans/{id}
+DELETE /api/study-plans/{id}
+
+Tasks
+
+GET    /api/tasks?search=&page=0&size=8
+POST   /api/tasks
+PUT    /api/tasks/{id}
+DELETE /api/tasks/{id}
+
+Attendance
+
+GET  /api/attendance
+POST /api/attendance
+
+Performance
+
+GET  /api/performance
+POST /api/performance
+
+Dashboard & Profile
+
+GET /api/dashboard
+GET /api/profile
+PUT /api/profile
+
+📸 Screenshots
+
+Screenshots of the application will be added here.
+
+Recommended screenshots:
+
 - Dashboard
+- Login/Register
 - Study Planner
-- Tasks
-- Attendance
-- Performance
+- Task Manager
+- Attendance Tracker
+- Performance Analytics
 - Pomodoro Timer
 
-## Notes for Interviews
+🎯 Project Highlights
 
-This project demonstrates authentication, role-ready security, DTO usage, validation, exception handling, CRUD APIs, user data isolation, pagination, search, analytics, responsive React UI, and a clean full-stack project structure.
-"# StudySync-AI-Smart-Study-Planner" 
+This project demonstrates practical experience with:
+
+- Full-stack application development
+- REST API development using Spring Boot
+- JWT authentication and Spring Security
+- CRUD operations
+- Spring Data JPA and Hibernate
+- MySQL database integration
+- DTO-based API design
+- Exception handling and validation
+- Pagination and search
+- User-specific data access
+- React component-based UI development
+- API integration using Axios
+- Data visualization using Chart.js
+- Responsive web application development
+
+🚀 Future Enhancements
+
+- AI-powered personalized study recommendations
+- Email or notification reminders
+- Advanced productivity analytics
+- Study streak tracking
+- Calendar integration
+- Deployment with cloud-based database and hosting
+
+👩‍💻 Author
+
+Prekshitha GL
+
+- GitHub: "prekshithagl" (https://github.com/prekshithagl)
+- LinkedIn: "Prekshitha GL" (https://www.linkedin.com/in/prekshitha-gl-535294366)
+
+📄 License
+
+This project is developed for educational and portfolio purposes.
